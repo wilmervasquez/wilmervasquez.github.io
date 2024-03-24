@@ -1,1 +1,0 @@
-import"../chunks/disclose-version.Bg9kRutz.js";import{p as e,a as t}from"../chunks/runtime.D55-kyL3.js";import{i as r}from"../chunks/lifecycle.DPqn41Nz.js";const a=!1,n=!0,u=Object.freeze(Object.defineProperty({__proto__:null,prerender:n,ssr:a},Symbol.toStringTag,{value:"Module"}));function c(s,o){t(o,!1),r(),e()}export{c as component,u as universal};
