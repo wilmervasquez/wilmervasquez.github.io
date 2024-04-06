@@ -1,5 +1,5 @@
 <script lang="ts">
-  const curric = [{},{},{},{}]
+  const curric = [{},{},{},{}] 
 </script>
 <div>
   {#each curric as m}
@@ -7,7 +7,7 @@
     <div class="cardm flex relative flex-col pb-2 pl-5">
       <div class="circle absolute w-5 h-5 -left-3 bg-neutral-700 border-2 rounded-full border-gray-400"></div>
       <h3 class="font-bold">New Branch</h3>
-      <p class="text-sm text-white text-opacity-60">You've created new branch fix-notifications from master</p>
+      <p class="text-sm dark:text-white text-opacity-60">You've created new branch fix-notifications from master</p>
       <time datetime="" class="text-sm">52 minutes ago</time>
     </div>
   {/each}
