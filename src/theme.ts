@@ -11,4 +11,4 @@ if (getThemeUser() === "dark") {
   localStorage.setItem("theme", "dark");
 }
 
-export {getThemeUser}
+export { getThemeUser }

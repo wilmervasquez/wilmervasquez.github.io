@@ -10,7 +10,7 @@
     --bg-app: #ebfeff;
   }
   .dark:root {
-    --bg-app: #242424;
+    --bg-app: #181818;
     color-scheme: light dark;
   }
 

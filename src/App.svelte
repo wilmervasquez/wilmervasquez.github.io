@@ -1,4 +1,7 @@
 <script lang="ts">
+  import SvgHex from "./SVGHex.svelte";
+  import SectionStack from "./SectionStack.svelte";
+  import SectionWorkExperience from "./SectionWorkExperience.svelte";
   import Dark from "./components/Dark.svelte";
   import TimeLine from "./components/TimeLine.svelte";
 
@@ -11,10 +14,9 @@
   <div class="shapes"></div>
   <Dark/>
   <section>
-
     <div class="flex gap-4">
       <div class="w-40 h-40 bg-gray-600 rounded-2xl flex-shrink-0 overflow-hidden">
-        <img class="" src="https://mighty.tools/mockmind-api/content/cartoon/25.jpg" alt="">
+        <img class="" src="/images/avatar.jpg" alt="">
       </div>
       <div class="flex flex-col justify-between flex-grow">
         <div class="flex justify-between items-center">
@@ -49,6 +51,11 @@
         </div>
       </div>
     </div>
+  </section>
+  <SectionStack/>
+  <SectionWorkExperience/>
+  <section>
+    <!-- <SvgHex/> -->
   </section>
   <div class="linex self-stretch"></div>
   <section>
@@ -107,6 +114,7 @@
     padding: 20px;
     position: relative;
   }
+ 
   .linex{
     height: 4px;
     width: 100%;
