@@ -4,6 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const n = Array.from({ length: 10 }, () => `rgba(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255}, ${Math.random()})`)
 ---
 
 <!doctype html>
@@ -17,7 +19,12 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<div class="fn">
+			{n.map(color=> <div class="color" style={`background:${color}; top:${Math.random()*100}%;left:${Math.random()*100}%`}></div>)}
+		</div>
+		<div>
+			<slot />
+		</div>
 	</body>
 </html>
 <style is:global>
@@ -45,5 +52,17 @@ const { title } = Astro.props;
 	body {
 		max-width: 800px;
 		margin: 0 auto;
+	}
+
+	.fn {
+
+	}
+	.color {
+		z-index: -1;
+		width: 200px;
+		aspect-ratio: 1;
+		transform: translate(-50px,-50px);
+		position: fixed;
+		filter: blur(100px);
 	}
 </style>
