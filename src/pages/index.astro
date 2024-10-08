@@ -1,22 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import ButtonCV from '../components/ButtonCV.astro';
+import TextGradient from '../components/TextGradient.astro';
 
 const date = new Date()
 
 ---
 
-<Layout title="Wilmer Vasquez | Portfololio">
+<Layout title="Wilmer Vasquez | Portfolio">
 	<div class="p-4 pt-8">
-		<div class="flex">
-			<div class="">
-				<h1 class="text-5xl font-black">Hi, I'm Wilmer 👋</h1>
-				<p>Software engineer. I love developing things and contributing to the university community. I am very active in the MerakT Team.</p>
+		<div class="flex flex-col items-center gap-5">
+			<div class="flex items-end gap-2">
+				<a href="mailto:wilmerluisvasquezlino@gmail.com">
+					<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+				</a>
+				<img src="https://avatars.githubusercontent.com/u/146269253?v=4" class="w-32 h-32 rounded-full bg-gray-700">
+				<a href="tel:+51910788928">
+					<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+				</a>
 			</div>
-			<img src="https://avatars.githubusercontent.com/u/146269253?v=4" class="w-32 h-32 rounded-full bg-gray-700">
+			<h1 class="text-7xl font-black text-center">
+				{
+					[..."Hi, I'm Wilmer"].map((l,i)=> {
+						return <span style={`color: hsl(${i*10+100},100%, 80%); text-shadow: 0 0 10px hsl(${i*10+100},100%, 50%);`}>{l}</span>
+					})
+				}
+			</h1>
+			
+			<div class="w-[600px]">
+				<p class="text-center text-2xl">
+
+				  <TextGradient text="+15" move={289}/> years of experience. <TextGradient text="Software engineer"/> in Huánuco, Perú. I love developing things and contributing to the university community. I am very active in the MerakT Team.</p>
+			</div>
 		</div>
-		<div class="nets flex items-center gap-4">
-			<button class="bg-sky-500 px-3 py-2 rounded-xl">Download CV</button>
+		<div class="nets flex items-center justify-center gap-4 pt-4">
+			<ButtonCV/>
 			<a href="http://github.com/wilmervasquez" target="_blank">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2c2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2a4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6c-.6.6-.6 1.2-.5 2V21"/></svg>
 			</a>
@@ -26,19 +45,32 @@ const date = new Date()
 			<a href="http://x.com/wilmervl_dev" target="_blank">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 4.01c-1 .49-1.98.689-3 .99c-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4c0 0-4.182 7.433 4 11c-1.872 1.247-3.739 2.088-6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58-1.04 6.522-3.723 7.651-7.742a13.8 13.8 0 0 0 .497-3.753c0-.249 1.51-2.772 1.818-4.013z"/></svg>
 			</a>
-			<a href=""></a>
-			<a href=""></a>
+		
+			
 		</div>
 	</div>
 	<div class="p-4">
-		<h2 class="font-bold text-4xl">About</h2>
+
+		<h2 class="font-bold text-4xl" id="about">
+			<svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="none"  stroke="#ff9999"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /><path d="M15 19l2 2l4 -4" /></svg>
+			<TextGradient text="About" move={0}/>
+		</h2>
 		<p class="text-gray-100">At the end of 2023, I started as a Systems and IT Engineer to dedicate myself to creating and expanding my own knowledge.</p>
 	</div>
 	<div class="p-4">
-		<h2 class="font-bold text-4xl">Work Experience</h2>
+		<h2 class="font-bold text-4xl"><TextGradient text="Work Experience" move={20}/></h2>
+	</div>
+	<!-- Proyects -->
+	<div class="p-4">
+			<svg  xmlns="http://www.w3.org/2000/svg"  width="36"  height="36"  viewBox="0 0 24 24"  fill="none"  stroke="#ffdd99"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-assembly"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.875 6.27a2.225 2.225 0 0 1 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" /><path d="M15.5 9.422c.312 .18 .503 .515 .5 .876v3.277c0 .364 -.197 .7 -.515 .877l-3 1.922a1 1 0 0 1 -.97 0l-3 -1.922a1 1 0 0 1 -.515 -.876v-3.278c0 -.364 .197 -.7 .514 -.877l3 -1.79c.311 -.174 .69 -.174 1 0l3 1.79h-.014z" /></svg>
+			<h2 class="font-bold text-4xl"><TextGradient text="Projects" move={40}/></h2>
+			
 	</div>
 	<div class="p-4">
-		<h2 class="font-bold text-4xl">Hard Skills</h2>
+		<h2 class="font-bold text-4xl"><TextGradient text="Soft Skills" move={40}/></h2>
+	</div>
+	<div class="p-4">
+		<h2 class="font-bold text-4xl"><TextGradient text="Hard Skills" move={60}/></h2>
 		<div class="flex gap-10 py-4">
 			<svg width="46" height="46" viewBox="0 0 630 667" fill="none" class="h-auto" xmlns="http://www.w3.org/2000/svg"><path d="M33.5746 60.5261L78.1441 560.442C79.7567 578.529 92.4112 593.723 109.909 598.581L303.013 652.191C310.639 654.308 318.697 654.309 326.324 652.195L520.03 598.493C537.533 593.64 550.194 578.445 551.809 560.354L596.422 60.5305C598.698 35.0223 578.604 13.0544 552.994 13.0544H77.0023C51.3944 13.0544 31.3005 35.0194 33.5746 60.5261Z" fill="#1572B6" stroke="white" stroke-width="25.2"></path><path d="M315.005 595.164L494.944 545.276L537.277 71.0341H315.005V595.164Z" fill="#33A9DC"></path><path d="M315.005 272.127H405.085L411.306 202.419H315.005V134.344H485.705L484.071 152.609L467.337 340.202H315.005V272.127Z" fill="white"></path><path d="M315.409 448.921L315.108 449.009L239.297 428.539L234.449 374.246H166.123L175.657 481.135L315.098 519.835L315.409 519.747V448.921Z" fill="#EBEBEB"></path><path d="M399.297 337.322L391.097 428.485L315.172 448.98V519.806L454.727 481.13L455.751 469.627L467.593 337.322H399.297Z" fill="white"></path><path d="M315.236 134.344V202.419H150.806L149.443 187.121L146.342 152.609L144.713 134.344H315.236ZM315.005 272.137V340.211H240.148L238.785 324.914L235.679 290.402L234.055 272.137H315.005Z" fill="#EBEBEB"></path></svg>
 			<svg width="46" height="46" viewBox="0 0 630 664" fill="none" class="h-auto" xmlns="http://www.w3.org/2000/svg"><path d="M34.9135 61.0471L79.2416 558.226C80.8542 576.313 93.5092 591.508 111.007 596.365L303.014 649.665C310.639 651.782 318.697 651.784 326.323 649.669L518.927 596.277C536.43 591.424 549.092 576.229 550.707 558.138L595.082 61.052C597.359 35.5435 577.265 13.5752 551.655 13.5752H78.3413C52.7333 13.5752 32.6393 35.5402 34.9135 61.0471Z" fill="#E44D26" stroke="white" stroke-width="25.2"></path><path d="M315 592.875L494.048 543.233L536.174 71.3334H315V592.875Z" fill="#F16529"></path><path d="M315 276.177H225.363L219.171 206.808H315V139.073H145.141L146.765 157.245L163.411 343.917H315V276.177ZM315 452.1L314.7 452.183L239.262 431.807L234.444 377.789H166.438L175.927 484.146L314.69 522.664L315 522.581V452.1Z" fill="#EBEBEB"></path><path d="M314.764 276.177V343.917H398.175L390.315 431.767L314.764 452.159V522.635L453.634 484.146L454.653 472.703L470.571 294.368L472.22 276.177H453.969H314.764ZM314.764 139.073V206.808H478.387L479.745 191.59L482.836 157.245L484.455 139.073H314.764Z" fill="white"></path></svg>
@@ -54,5 +86,12 @@ const date = new Date()
 </Layout>
 
 <style>
-
+	a {
+		padding: 8px;
+		border: 1px solid rgba(255, 255, 255, 0.09);
+		border-radius: 50%;
+	}
+	a:hover {
+		background-color: rgba(255, 255, 255, 0.096);
+	}
 </style>

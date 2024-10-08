@@ -1,4 +1,6 @@
 ---
+import Header from '../components/Header.astro';
+
 interface Props {
 	title: string;
 }
@@ -6,6 +8,15 @@ interface Props {
 const { title } = Astro.props;
 
 const n = Array.from({ length: 10 }, () => `rgba(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255}, ${Math.random()})`)
+
+function randPosition() {
+	console.log(23)
+	return Math.round(Math.random()*200) - 100
+}
+
+function randDeg() {
+	return Math.random() * 180 - 90
+}
 ---
 
 <!doctype html>
@@ -19,10 +30,34 @@ const n = Array.from({ length: 10 }, () => `rgba(${Math.random()*255}, ${Math.ra
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="fn">
-			{n.map(color=> <div class="color" style={`background:${color}; top:${Math.random()*100}%;left:${Math.random()*100}%`}></div>)}
+		<div class="fondo">
+			{n.map(color=> <div class="color" style={
+				`background:${color}; 
+				--x:${randPosition()}%;
+				--y:${randPosition()}%;
+				--x2:${randPosition()}%;
+				--y2:${randPosition()}%;
+				--x3:${randPosition()}%;
+				--y3:${randPosition()}%;
+				--x4:${randPosition()}%;
+				--y4:${randPosition()}%`
+				}></div>)}
+			{
+				['Javascript', 'CSS','React','PHP','Laravel', 'Python','HTML','Figma','Web','Software'].map((lang) => {
+					return (
+						<div class="chip" style={`
+						 top:${Math.random() * 100}%; 
+						 left: ${Math.random() * 100}%;
+						 rotate: ${randDeg()}deg;
+					 `}>
+							{lang}
+						</div>
+					);
+				})
+			}
 		</div>
-		<div>
+		<div class="content">
+			<Header/>
 			<slot />
 		</div>
 	</body>
@@ -36,7 +71,8 @@ const n = Array.from({ length: 10 }, () => `rgba(${Math.random()*255}, ${Math.ra
 	}
 	html {
 		font-family: sans-serif;
-		background: #08090A;
+		background: hsl(222, 0%, 5%);
+		scroll-behavior: smooth;
 	}
 	code {
 		font-family:
@@ -54,15 +90,48 @@ const n = Array.from({ length: 10 }, () => `rgba(${Math.random()*255}, ${Math.ra
 		margin: 0 auto;
 	}
 
-	.fn {
+	.fondo {
 
+		z-index: -3;
 	}
+	@keyframes ani {
+		0%, 100% {
+			top: var(--x);
+			left: var(--y);
+		}
+		25% {
+			top: var(--x2);
+			left: var(--y2);
+		}
+		50% {
+			top: var(--x3);
+			left: var(--y3);
+		}
+		75% {
+			top: var(--x4);
+			left: var(--y4);
+		}
+	}
+	
 	.color {
-		z-index: -1;
 		width: 200px;
 		aspect-ratio: 1;
 		transform: translate(-50px,-50px);
 		position: fixed;
-		filter: blur(100px);
+		filter: blur(70px);
+		border-radius: 50%;
+		animation: ani 100s linear infinite;
+		z-index: -1;
+		opacity: 0.5;
+	}
+	.chip {
+		background-color: rgba(240, 255, 255, 0.185);
+		width: min-content;
+		padding: 8px 12px;
+		border-radius: 120px;
+		opacity: 0.1;
+		position: absolute;
+		z-index: -1;
+
 	}
 </style>

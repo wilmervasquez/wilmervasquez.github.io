@@ -1,0 +1,9 @@
+---
+const { text, move = 100 } = Astro.props;
+---
+
+{
+  [...text].map((l,i)=> {
+    return <span class="font-bold" style={`color: hsl(${i*10+move},100%, 80%); text-shadow: 0 0 10px hsl(${i*10+move},100%, 50%);`}>{l}</span>
+  })
+}
