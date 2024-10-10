@@ -1,0 +1,17 @@
+---
+import TextGradient from "./TextGradient.astro";
+const { title, rangeColor = 0} = Astro.props
+
+---
+<section class="flex flex-col gap-2 p-4">
+
+  <div class="rounded-full w-min p-4" style=`background: hsla(${rangeColor},100%,50%,0.3);`>
+    <slot name="icon"/>
+  </div>
+  <h2 class="font-bold text-4xl" id="about">
+    <TextGradient text={title} move={rangeColor} scal="5"/>
+  </h2>
+  <div class="">
+    <slot/>
+  </div>
+</section>

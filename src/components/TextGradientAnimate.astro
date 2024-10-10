@@ -1,0 +1,27 @@
+---
+const { text, move = 100, scal = 10 } = Astro.props;
+---
+
+{
+  [...text].map((l,i)=> {
+    return <span class="font-bold" style={
+      `--color: hsl(${i*scal+move},100%, 80%); text-shadow: 0 0 10px hsl(${i*scal+move},100%, 50%);
+      animation-delay: ${i*100}ms`
+    }>{l}</span>
+  })
+}
+
+<style>
+  span {
+    animation:2s ef infinite;
+  }
+  @keyframes ef {
+    0%,100% {
+      color: var(--color);
+    }
+    50% {
+      color: rgb(255, 255, 255);
+    }
+    
+  }
+</style>
