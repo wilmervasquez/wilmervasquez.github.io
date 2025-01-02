@@ -32,7 +32,7 @@ function randDeg() {
 	<body>
 		<div class="fondo overflow-hidden">
 			{n.map(color=> <div class="color" style={
-				`background:${color}; 
+				`background:${color};
 				--x:${randPosition()}%;
 				--y:${randPosition()}%;
 				--x2:${randPosition()}%;
@@ -46,11 +46,11 @@ function randDeg() {
 				['Javascript','Django','Tailwind CSS', 'CSS','React','PHP','Laravel', 'Python','HTML','Figma','Web','Software'].map((lang) => {
 					return (
 						<div class="chip" style={`
-						 top:${Math.random() * 100}%; 
+						 top:${Math.random() * 100}%;
 						 left: ${Math.random() * 100}%;
 						 rotate: ${randDeg()}deg;
 					 `}>
-							{lang} 
+							{lang}
 						</div>
 					);
 				})
@@ -64,7 +64,7 @@ function randDeg() {
 </html>
 <style is:global>
 	:root {
-		
+
 	}
 	* {
 		color-scheme: light dark;
@@ -113,7 +113,7 @@ function randDeg() {
 			left: var(--y4);
 		}
 	}
-	
+
 	.color {
 		width: 200px;
 		aspect-ratio: 1;
