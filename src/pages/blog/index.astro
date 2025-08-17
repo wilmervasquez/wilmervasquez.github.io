@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const blogs = await getCollection('blogs')
+
+---
+<Layout title="Portfolio | About">
+  <section>
+    <div class="grid grid-cols-3 gap-4 p-2">
+      {
+        blogs.map((blog)=> {
+          const { id, data } = blog
+          const { title, image } = data
+
+          return (
+            <article class="border border-neutral-700 p-2 rounded-lg">
+              <h2 transition:name={`title-${id}`}> {title}</h2>
+              <img transition:name={`image-${id}`} src={`/images/${image}`} class="rounded">
+              <a href={`/blog/${id}`}>Go</a>
+            </article>
+          )
+        })
+      }
+    </div>
+  </section>
+</Layout>
