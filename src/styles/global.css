@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
+
+@theme {
+  --font-mono: monospace;
+}
+
+@layer utilities {
+  .grad-0 {
+    @apply bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-800;
+  }
+  .grad-1 {
+    @apply bg-gradient-to-b from-pink-500 to-violet-500;
+  }
+  .grad-2 {
+    @apply bg-gradient-to-b from-teal-500 to-blue-500;
+  }
+}

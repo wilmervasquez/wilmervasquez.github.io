@@ -1,9 +1,12 @@
 ---
 title: Arquitectura hexagonal
+description: La arquitectura hexagonal es un patrón de diseño que promueve la separación de preocupaciones y la independencia de las tecnologías externas.
 image: p2.jpeg
-
+createdAt: 2025-04-03
+updatedAt: 2025-04-03
 ---
-
+# Domain
+capabilities 
 ```typescript
 // src/index.ts
 import { UserService } from './core/application/UserService';
@@ -15,7 +18,8 @@ import express from 'express';
 const userRepository = new MongoUserRepository();
 const userService = new UserService(userRepository);
 const userController = new UserController(userService);
-
+```
+```typescript
 const app = express();
 app.use(express.json());
 

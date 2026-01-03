@@ -1,0 +1,50 @@
+---
+let { value = "md" } = Astro.props;
+
+value = value + '...'
+---
+<div class="m-6 flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900 p-5">
+  <div class="kj size-5.5"></div>
+  <p class="flex">
+    {
+      value.split('').map((char, index) => (
+        <span style={`animation-delay: ${2 / value.length * index}s; --duration: ${2}s`}>{char == " " ? <>&nbsp;</> : char}</span>
+      ))
+    }
+  </p>
+</div>
+<style>
+  
+.kj {
+  /* background-color: var(--color-neutral-900); */
+  border-radius: 70px;
+  animation: jkl 2s infinite linear;
+  box-shadow: -1px -1px 4px oklch(0.667 0.295 322.15) inset, 
+              1px 1px 4px oklch(0.645 0.246 16.439) inset
+};
+ 
+@keyframes jkl {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+   100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes jklt {
+  0%, 100% {
+    color: rgb(24, 23, 23);
+  }
+  40%{
+    color: oklch(0.667 0.295 322.15);
+  }
+}
+span {
+  animation-name: jklt;
+  animation-duration: var(--duration);
+  animation-iteration-count: infinite;
+  font-size: 20px;
+}
+</style>

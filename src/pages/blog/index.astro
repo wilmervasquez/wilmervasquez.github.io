@@ -1,24 +1,32 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import TextGradientAnimate from "../../components/TextGradientAnimate.astro";
 
-const blogs = await getCollection('blogs')
-
+const blogs = await getCollection('blogs');
 ---
 <Layout title="Portfolio | About">
   <section>
-    <div class="grid grid-cols-3 gap-4 p-2">
+    <h1 class="text-center text-3xl font-bold">
+      <TextGradientAnimate text="Hi, a my blog"/>
+    </h1>
+    <p class="text-center text-lg text-neutral-400">Welcome to my blog where I share my thoughts and experiences.</p>
+    <div class="grid grid-cols-2 gap-4 p-2">
       {
         blogs.map((blog)=> {
           const { id, data } = blog
-          const { title, image } = data
+          const { title, image, createdAt, description } = data
 
           return (
-            <article class="border border-neutral-700 p-2 rounded-lg">
-              <h2 transition:name={`title-${id}`}> {title}</h2>
-              <img transition:name={`image-${id}`} src={`/images/${image}`} class="rounded">
-              <a href={`/blog/${id}`}>Go</a>
-            </article>
+            <a href={`/blog/${id}`}>
+              <article class="border border-neutral-800 p-2 rounded-2xl bg-neutral-900">
+                <img transition:name={`image-${id}`} src={`/images/${image}`} class="rounded-lg">
+                <div class="p-2">
+                  <h2 transition:name={`title-${id}`} class="font-bold text-xl text-neutral-100"> {title}</h2>
+                  <p class="text-sm text-neutral-400">{description}</p>
+                </div>
+              </article>
+            </a>
           )
         })
       }

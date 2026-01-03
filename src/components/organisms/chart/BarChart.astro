@@ -1,0 +1,89 @@
+---
+// import './BarChart.css';
+
+const data = [
+  { month: "January", count: 1090, error: 209 },
+  { month: "February", count: 540, error: 1330 },
+  { month: "March", count: 820, error: 400 },
+  { month: "April", count: 308, error: 1432 },
+  { month: "May", count: 200, error: 590 },
+  { month: "June", count: 600, error: 150 },
+  { month: "July", count: 900, error: 300 },
+  { month: "August", count: 2023, error: 1030 }
+]
+
+const max = Math.max(...[Math.max(...data.map(item => item.count)), Math.max(...data.map(item => item.error))])
+---
+<div class="flex flex-col p-4 bg-neutral-900  border border-neutral-800 rounded-2xl">
+  <h2 class="text-lg font-semibold text-neutral-200">Monthly Visits and Errors</h2>
+  <p class="text-sm text-neutral-400">This chart shows the monthly visits and errors for each month.</p>
+  <div class="flex items-end justify-between rounded-2xl p-4">
+    <div class="flex flex-col-reverse justify-between self-stretch pb-5 pt-2 pr-2">
+      {[...Array(7)].map((_, index) => (
+        <div class="text-neutral-400 text-sm text-right">${new Intl.NumberFormat('us', { notation: 'compact' }).format(max / 6 * index)}</div>
+      ))}
+    </div>
+    {data.map((item, i) => (
+      <div class="flex flex-col items-center group/bar">
+        <div class="mk flex items-end h-60 gap-2 p-2 rounded-xl relative">
+          <div class="bar grad-1 group-hover/bar:grad-1 w-8 rounded-md p-1" style={{ height: `${item.count * 100 / max}%` }}></div>
+          <div class="bar-error grad-2 group-hover:grad-2 w-8 p-0.5 rounded-md" style={{ height: `${item.error * 100 / max}%` }}></div>
+          <div class={`g-h hidden absolute p-2 bg-neutral-900 top-2 border border-neutral-800 rounded-xl gap-4 ${i > 3 ? 'right-2' : 'left-2'}`}>
+            <div class="">
+              <div class="flex gap-2 items-center">
+                <div class="w-1 grad-1 h-4 rounded-4xl"></div>
+                <span class="font-bold text-xl">${item.count}</span>
+              </div>
+              <p class="text-sm text-neutral-400 text-nowrap">{item.month} 2025</p>
+            </div>
+            <div class="w-0.5 self-stretch bg-gradient-to-b from-transparent via-neutral-700 to-transparent"></div>
+            <div class="">
+              <div class="flex gap-2 items-center">
+                <div class="w-1 grad-2 h-4 rounded-4xl"></div>
+                <span class="font-bold text-xl">${item.error}</span>
+              </div>
+              <p class="text-sm text-neutral-400 text-nowrap">{item.month} 2025</p>
+            </div>
+          </div>
+        </div>
+        <p class="text-neutral-400 text-sm">{item.month}</p>
+      </div>
+    ))}
+  </div>
+  <div class="flex self-center gap-6">
+    <div class="flex items-center gap-2">
+      <div class="size-4 rounded-sm grad-1"></div>
+      <span class="text-sm text-neutral-400">Visits</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="size-4 rounded-sm grad-2"></div>
+      <span class="text-sm text-neutral-400">Errors</span>
+    </div>
+  </div>
+</div>
+<style is:global>
+
+  .mk:hover {
+    background-color: var(--color-neutral-800);
+    .bar {
+      background: linear-gradient(0deg, #00f3ff, #127aff, #3524ff);
+    }
+
+    .bar-error {
+      background: linear-gradient(0deg, #8900ff, #db12ff, #ff24dc);
+    }
+
+    .bar, .bar-error {
+      box-shadow: 0 0 7px rgba(255, 255, 255, 0.514) inset;
+    }
+    .g-h {
+      display: flex;
+    }
+  }
+
+  .bar, .bar-error {
+    box-shadow: 0 0 7px rgba(255, 255, 255, 0.514) inset;
+    transition: all 3s ease;
+  }
+
+</style>
